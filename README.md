@@ -3,9 +3,9 @@ sn2_AOI_5_Khartoum dataset: https://drive.google.com/drive/folders/1-E0Qf56LnZJz
 
 I try to solve this as an image segmentation problem and build a segmentation model which is Unet in Pytorch (based on this https://www.pyimagesearch.com/2021/11/08/u-net-training-image-segmentation-models-in-pytorch/). This report covers:
 
-* An overview of U-Net that make it a powerful segmentation model
+* An overview of U-Net features that make it a powerful segmentation model
 * Creating a custom PyTorch Dataset for Space Net 2
-* Training the U-Net segmentation model from scratch
+* Training the U-Net segmentation model
 
 ## An overview of U-Net that make it a powerful segmentation model
 * The U-Net architecture follows an encoder-decoder structure, where the encoder gradually compresses information into a lower-dimensional representation. Then the decoder decodes this information back to the original image dimension. Owing to this, the architecture gets an overall U-shape, which leads to the name U-Net.
@@ -25,5 +25,7 @@ I try to solve this as an image segmentation problem and build a segmentation mo
 
 * About the .tif image files, to read them I use rasterio because PIL and cv2 read them wrong in this case.
 
+## Training the U-Net segmentation model from scratch
+* Overall, U-Net model will consist of an Encoder class and a Decoder class. The encoder will gradually reduce the spatial dimension to compress information. Furthermore, it will increase the number of channels, that is, the number of feature maps at each stage, enabling our model to capture different details or features in our image. On the other hand, the decoder will take the final encoder representation and gradually increase the spatial dimension and reduce the number of channels to finally output a segmentation mask of the same spatial dimension as the input image.
 
 
