@@ -39,3 +39,7 @@ In this task, I have completed:
 I have failed:
 * Training the model because loss go to 0 after the first epoch
 * Completing the task
+
+Problem that I have met:
+* Download the dataset with AWS
+* Colab GPU limitation
