@@ -28,4 +28,14 @@ I try to solve this as an image segmentation problem and build a segmentation mo
 ## Training the U-Net segmentation model from scratch
 * Overall, U-Net model will consist of an Encoder class and a Decoder class. The encoder will gradually reduce the spatial dimension to compress information. Furthermore, it will increase the number of channels, that is, the number of feature maps at each stage, enabling our model to capture different details or features in our image. On the other hand, the decoder will take the final encoder representation and gradually increase the spatial dimension and reduce the number of channels to finally output a segmentation mask of the same spatial dimension as the input image.
 
+* I used Unet class definition from https://www.pyimagesearch.com/2021/11/08/u-net-training-image-segmentation-models-in-pytorch/
 
+### Conclusion
+In this task, I have completed:
+* Researching about Unet and other segmentation models.
+* Examinating SpaceNet2 sn2_AOI_5_Khartoum.
+* Define Dataset and Model class
+
+I have failed:
+* Training the model because loss go to 0 after the first epoch
+* Completing the task
