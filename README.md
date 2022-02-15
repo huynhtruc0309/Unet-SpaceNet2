@@ -4,10 +4,10 @@ sn2_AOI_5_Khartoum dataset: https://drive.google.com/drive/folders/1-E0Qf56LnZJz
 I try to solve this as an image segmentation problem and build a segmentation model which is Unet in Pytorch (based on this https://www.pyimagesearch.com/2021/11/08/u-net-training-image-segmentation-models-in-pytorch/). This report covers:
 
 * An overview of U-Net that make it a powerful segmentation model
-* Creating a custom PyTorch Dataset for our image segmentation task
+* Creating a custom PyTorch Dataset for Space Net 2
 * Training the U-Net segmentation model from scratch
 
-## About Unet
+## An overview of U-Net that make it a powerful segmentation model
 * The U-Net architecture follows an encoder-decoder structure, where the encoder gradually compresses information into a lower-dimensional representation. Then the decoder decodes this information back to the original image dimension. Owing to this, the architecture gets an overall U-shape, which leads to the name U-Net.
 
 * One of the salient features of the U-Net architecture is the skip connections, which enable the flow of information from the encoder side to the decoder side, enabling the model to make better predictions.
@@ -18,5 +18,12 @@ I try to solve this as an image segmentation problem and build a segmentation mo
 
 * Thus, to use both these pieces of information during predictions, the U-Net architecture implements skip connections between the encoder and decoder. This enables us to take intermediate feature map information from various depths on the encoder side and concatenate it at the decoder side to process and facilitate better predictions.
 
-# SpaceNet 2: Building Detection v2
-I chose Khartoum as it is the smallest one. Downloading them is very time-consuming, AWS made me wait for 24h in oder to be able to register for AWS CLI. 
+## Creating a custom PyTorch Dataset for Space Net 2
+* I chose Khartoum as it is the smallest one. Downloading them is very time-consuming, AWS made me wait for 24h in oder to be able to register for AWS CLI. I managed to download it through mlhub https://mlhub.earth/data/spacenet2 and torchgeo https://torchgeo.readthedocs.io/en/latest/api/datasets.html#torchgeo.datasets.SpaceNet.
+
+* torchgeo provided torchgeo.datasets.SpaceNet2 but it doesn't have train_test_split so I reimplement this class that allow me to create object by list of file paths from train and test split.
+
+* About the .tif image files, to read them I use rasterio because PIL and cv2 read them wrong in this case.
+
+
+
